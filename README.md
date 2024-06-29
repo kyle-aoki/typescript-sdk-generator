@@ -12,7 +12,7 @@ new TypescriptSdkGenerator()
         .generate();
 ```
 
-Example `RestController`:
+`RestController`s require an input & an output class. `@RequestMapping` is required (do not use `@GetMapping`, `@PostMapping`, et cetra). Example `RestController`:
 ```
 @RestController
 @RequestMapping("/StudentService")
