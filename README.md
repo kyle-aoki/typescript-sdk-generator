@@ -12,3 +12,33 @@ new TypescriptSdkGenerator()
         .register(StudentServiceV2.class)
         .generate();
 ```
+
+Example `RestController`:
+```
+@RestController
+@RequestMapping("/StudentService")
+public class StudentService {
+
+    Logger log = LoggerFactory.getLogger(StudentService.class);
+
+    @RequestMapping("/CreateStudent")
+    public CreateStudentOutput CreateStudent(@RequestBody CreateStudentInput input) {
+        log.info("creating student {}", input);
+        return new CreateStudentOutput(
+                Outcome.OK,
+                new CreateStudentOutput.CreateStudentOutputUser(0L, "", "")
+        );
+    }
+
+    @RequestMapping("/DeleteStudent")
+    public DeleteStudentOutput DeleteStudent(@RequestBody DeleteStudentInput input) {
+        return new DeleteStudentOutput();
+    }
+
+    @RequestMapping("/FindUser")
+    public FindUserOutput FindUser(@RequestBody FindUserInput input) {
+        return new FindUserOutput(null);
+    }
+
+}
+```
