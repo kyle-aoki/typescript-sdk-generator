@@ -1,4 +1,4 @@
-Generates a typescript file based on Spring `RestController` methods.
+Generates a typescript file based on Spring `RestController` methods. Not production ready.
 
 Example:
 ```
