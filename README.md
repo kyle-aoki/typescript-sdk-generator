@@ -3,7 +3,7 @@ Generates a typescript file based on Spring `RestController` methods. Not produc
 Example:
 ```
 new TypescriptSdkGenerator()
-        .setGenerationCondition(activeProfile == null || activeProfile.isEmpty() || activeProfile.equals("dev"))
+        .setGenerationCondition(activeProfile == null || activeProfile.equals("dev"))
         .setOutputDirectory("./typescript-sdk")
         .setSdkFileName("demo-api.ts")
         .extendTypeMap("LocalDate", "number")
