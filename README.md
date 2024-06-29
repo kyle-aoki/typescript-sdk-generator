@@ -6,10 +6,9 @@ new TypescriptSdkGenerator()
         .setGenerationCondition(activeProfile == null || activeProfile.isEmpty() || activeProfile.equals("dev"))
         .setOutputDirectory("./typescript-sdk")
         .setSdkFileName("demo-api.ts")
-        .extendTypeMap("Integer", "number")
-        .extendTypeMap("Float", "number")
+        .extendTypeMap("LocalDate", "number")
         .register(StudentService.class)
-        .register(StudentServiceV2.class)
+        .register(EnrollmentService.class)
         .generate();
 ```
 
@@ -19,25 +18,19 @@ Example `RestController`:
 @RequestMapping("/StudentService")
 public class StudentService {
 
-    Logger log = LoggerFactory.getLogger(StudentService.class);
-
     @RequestMapping("/CreateStudent")
     public CreateStudentOutput CreateStudent(@RequestBody CreateStudentInput input) {
-        log.info("creating student {}", input);
-        return new CreateStudentOutput(
-                Outcome.OK,
-                new CreateStudentOutput.CreateStudentOutputUser(0L, "", "")
-        );
+        return null;
     }
 
     @RequestMapping("/DeleteStudent")
     public DeleteStudentOutput DeleteStudent(@RequestBody DeleteStudentInput input) {
-        return new DeleteStudentOutput();
+        return null;
     }
 
     @RequestMapping("/FindUser")
     public FindUserOutput FindUser(@RequestBody FindUserInput input) {
-        return new FindUserOutput(null);
+        return null;
     }
 
 }
@@ -45,7 +38,7 @@ public class StudentService {
 
 Example typescript output:
 ```
-...
+// ...
 export interface FindUserOutput {
     user: User;
 }
@@ -92,5 +85,5 @@ export class StudentService {
         return executeRPC(this.headers, this.host, "/StudentService/FindUser", input);
     };
 }
-...
+// ...
 ```
