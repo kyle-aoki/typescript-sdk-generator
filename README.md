@@ -87,10 +87,3 @@ export class StudentService {
 }
 // ...
 ```
-
-Also includes a SqlMigrator class:
-```
-new SqlMigrator()
-        .setMigrationDirectory("./migrations")
-        .migrate(dataSource());
-```
